@@ -148,7 +148,7 @@ def get_parameters():
                                                 verbose=1, 
                                                 factor=0.5,
                                                 min_lr=0.00001)
-    filepath = "../content/ModelColorization_Model.h5"
+    filepath = "../content/Model/Colorization_Model.h5"
     checkpoint = ModelCheckpoint(filepath,
                                 save_best_only=True,
                                 monitor='loss',
@@ -175,3 +175,48 @@ class colorGen():
                             )
         model.save(filepath)
         model.save_weights("../content/Model/Colorization_Weights.h5")
+
+
+    def test(sample):
+
+        model = load_model("../content/Model/Colorization_Model.h5")
+        model.load_weights("../content/Model/Colorization_Weights.h5")
+
+        color_me = gray2rgb(rgb2gray(sample))
+        color_me_embed = create_inception_embedding(color_me)
+        color_me = rgb2lab(color_me)[:,:,:,0]
+        color_me = color_me.reshape(color_me.shape+(1,))
+
+        output = model.predict([color_me, color_me_embed])
+        output = output * 128
+
+        decoded_imgs = np.zeros((len(output),256, 256, 3))
+
+        for i in range(len(output)):
+            cur = np.zeros((256, 256, 3))
+            cur[:,:,0] = color_me[i][:,:,0]
+            cur[:,:,1:] = output[i]
+            decoded_imgs[i] = lab2rgb(cur)
+            cv2.imwrite("img_"+str(i)+".jpg", lab2rgb(cur))
+
+
+        plt.figure(figsize=(20, 6))
+        for i in range(10):
+            # grayscale
+            plt.subplot(3, 10, i + 1)
+            plt.imshow(rgb2gray(X_test)[i].reshape(256, 256))
+            plt.gray()
+            plt.axis('off')
+ 
+            # recolorization
+            plt.subplot(3, 10, i + 1 +10)
+            plt.imshow(decoded_imgs[i].reshape(256, 256,3))
+            plt.axis('off')
+    
+            # original
+            plt.subplot(3, 10, i + 1 + 20)
+            plt.imshow(X_test[i].reshape(256, 256,3))
+            plt.axis('off')
+ 
+            plt.tight_layout()
+            plt.show()
