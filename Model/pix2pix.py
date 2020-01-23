@@ -20,22 +20,21 @@ from keras.layers import Input, Dense, Reshape, Flatten, Dropout, Concatenate
 from keras.layers import BatchNormalization, Activation, ZeroPadding2D
 from keras.layers.advanced_activations import LeakyReLU
 from keras.layers.convolutional import UpSampling2D, Conv2D
-from keras.models import Sequential, Model
+from keras.models import Sequential, Model, load_model
 from keras.optimizers import Adam
 import datetime
 import sys
 import os
 #from imageio import imread
 import imageio
-sys.path.append("/content/drive/My Drive/CESI/Projets A5/Data Science/Projet DataScience") #Path Kayou
-sys.path.append("/content/drive/My Drive/Projet DataScience") #Path Medou
+sys.path.append("Projet-Datascience") #Path Kayou
 from Pipeline.Degradation import UglyImage
 
 class DataLoader():
   def __init__(self, img_res=(128,128)):
     self.img_res = img_res
-    self.train_path_files = '/content/Train/'
-    self.val_path_files = '/content/Val/'
+    self.train_path_files = '../Train/'
+    self.val_path_files = '../Val/'
 
   def load_data(self, batch_size=1, is_val=True):
     """
@@ -144,9 +143,8 @@ class Pix2Pix():
 
     optimizer = Adam(0.0002, 0.5)
 
-    self.generator_weights_filepath = 'weights_generator.hdf5'
-    self.discriminator_weights_filepath = 'weights_discriminator.hdf5'
-
+    self.generator_weights_filepath = '../Weights/weights_generator.h5'
+    self.discriminator_weights_filepath = '../Weights/weights_discriminator.h5'
 
     # Build and compile the discriminator
     self.discriminator = self.build_discriminator()
@@ -274,9 +272,7 @@ class Pix2Pix():
     fake = np.zeros((batch_size,) + self.disc_patch)
 
     for epoch in range(epochs):
-        #print("start epoch : " + str(epoch))
         for batch_i, (clean_images, degraded_images) in enumerate(self.data_loader.load_batch(batch_size)):
-            #print("start step : " + str(batch_i))
 
             # Train disciminator
 
@@ -305,19 +301,10 @@ class Pix2Pix():
         for model, best_loss, loss, model_weights_filepath in [[self.generator, generator_best_loss, g_loss[0], self.generator_weights_filepath], [self.discriminator, discriminator_best_loss, d_loss[0], self.discriminator_weights_filepath]]:
           if best_loss == None or best_loss > loss:
             best_loss = loss
-            model.save_weights(model_weights_filepath, True)
+            model.save_weights(model_weights_filepath)
+            
           else:
             pass
-
-  def test(self, degraded_images, filepath_generator_weights):
-    if os.path.isfile(filepath_generator_weights):
-      self.generator.load_weights(filepath_generator_weights, True)
-      print('generator weights loaded')
-    else:
-      print('ERROR : Generator weights not loaded')
-    
-    clean_images = self.generator.predict(degraded_images)
-    return clean_images
 
   def show_images(self, epoch, batch_i):
         
