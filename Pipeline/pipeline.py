@@ -9,7 +9,7 @@ import cv2
 from tqdm import tqdm_notebook as tqdm
 
 #sys.path.append("/content/drive/My Drive/CESI/Projets A5/Data Science/Projet DataScience/Pipeline")
-from Degradation import UglyImage
+from Pipeline.Degradation import UglyImage
 
 class Pipeline():
     def __init__(self, dataset_name = 'train2014', img_size=(512, 512)): # no *args or **kargs
