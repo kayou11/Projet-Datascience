@@ -17,7 +17,7 @@ class Pipeline():
         self.img_size = img_size
 
     def create_tree_directories(self):
-        os.system('mkdir data/Train')
+        os.system('mkdir Train')
         os.system('mkdir Train/degraded')
         os.system('mkdir Test')
 
