@@ -20,7 +20,8 @@ class Pipeline():
         os.system('mkdir Train')
         os.system('mkdir Train/degraded')
         os.system('mkdir Test')
-
+        os.system('mkdir Weights')
+            
     def download_data(self):
         start_time = time.time()
         url = "images.cocodataset.org/zips/"+self.dataset_name+".zip"  # URL du dataset
