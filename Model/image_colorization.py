@@ -148,7 +148,7 @@ def get_parameters():
                                                 verbose=1, 
                                                 factor=0.5,
                                                 min_lr=0.00001)
-    filepath = "../content/ModelArt_Colorization_Model.h5"
+    filepath = "../content/ModelColorization_Model.h5"
     checkpoint = ModelCheckpoint(filepath,
                                 save_best_only=True,
                                 monitor='loss',
@@ -174,4 +174,4 @@ class colorGen():
                     allbacks=model_callbacks
                             )
         model.save(filepath)
-        model.save_weights("../content/Model/Art_Colorization_Weights.h5")
+        model.save_weights("../content/Model/Colorization_Weights.h5")
