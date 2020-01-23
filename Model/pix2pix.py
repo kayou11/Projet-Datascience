@@ -33,8 +33,8 @@ from Pipeline.Degradation import UglyImage
 class DataLoader():
   def __init__(self, img_res=(128,128)):
     self.img_res = img_res
-    self.train_path_files = '../Train/'
-    self.val_path_files = '../Val/'
+    self.train_path_files = '/content/Train'
+    self.val_path_files = '/content/Val'
 
   def load_data(self, batch_size=1, is_val=True):
     """
@@ -143,8 +143,8 @@ class Pix2Pix():
 
     optimizer = Adam(0.0002, 0.5)
 
-    self.generator_weights_filepath = '../Weights/weights_generator.h5'
-    self.discriminator_weights_filepath = '../Weights/weights_discriminator.h5'
+    self.generator_weights_filepath = '/content/Weights/weights_generator.h5'
+    self.discriminator_weights_filepath = '/content/Weights/weights_discriminator.h5'
 
     # Build and compile the discriminator
     self.discriminator = self.build_discriminator()
