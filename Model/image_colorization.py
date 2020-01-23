@@ -130,7 +130,7 @@ def create_inception_embedding(grayscaled_rgb):
     return embed
 
 #Generate training data
-def image_a_b_gen(dataset=X_train, batch_size = 20):
+def image_a_b_gen(dataset, batch_size = 20):
     datagen = data_generator()
     for batch in datagen.flow(dataset, batch_size=batch_size):
         X_batch = rgb2gray(batch)
