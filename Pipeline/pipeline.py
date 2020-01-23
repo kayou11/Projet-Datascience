@@ -8,7 +8,7 @@ import numpy as np
 import cv2
 from tqdm import tqdm_notebook as tqdm
 
-sys.path.append("/content/drive/My Drive/CESI/Projets A5/Data Science/Projet DataScience/Pipeline")
+#sys.path.append("/content/drive/My Drive/CESI/Projets A5/Data Science/Projet DataScience/Pipeline")
 from Degradation import UglyImage
 
 class Pipeline():
@@ -17,7 +17,7 @@ class Pipeline():
         self.img_size = img_size
 
     def create_tree_directories(self):
-        os.system('mkdir Train')
+        os.system('mkdir data/Train')
         os.system('mkdir Train/degraded')
         os.system('mkdir Test')
 
