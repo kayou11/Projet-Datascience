@@ -46,7 +46,7 @@ def get_data():
     IMG_HEIGHT = 256
     IMG_CHANNELS = 3
     INPUT_SHAPE=(IMG_HEIGHT, IMG_WIDTH, 1)
-    TRAIN_PATH = '../content/Train/clean/'
+    TRAIN_PATH = '/content/Train/clean/'
     train_ids = next(os.walk(TRAIN_PATH))[2]
 
     X_train = np.zeros((len(train_ids), IMG_HEIGHT, IMG_WIDTH, IMG_CHANNELS), dtype=np.uint8)
@@ -148,7 +148,7 @@ def get_parameters():
                                                 verbose=1, 
                                                 factor=0.5,
                                                 min_lr=0.00001)
-    filepath = "../content/Projet-Datascience/Model/Colorization_Model.h5"
+    filepath = "/content/Projet-Datascience/Weights/Colorization_Model.h5"
     checkpoint = ModelCheckpoint(filepath,
                                 save_best_only=True,
                                 monitor='loss',
@@ -174,13 +174,13 @@ class colorGen():
                     allbacks=model_callbacks
                             )
         model.save(filepath)
-        model.save_weights("../content/Projet-Datascience/Model/Colorization_Weights.h5")
+        model.save_weights("/content/Weights/Colorization_Weights.h5")
 
 
     def test(sample):
 
-        model = load_model("../content/Projet-Datascience/Model/Colorization_Model.h5")
-        model.load_weights("../content/Projet-Datascience/Model/Colorization_Weights.h5")
+        model = load_model("/content/Projet-Datascience/Weights/Colorization_Model.h5")
+        model.load_weights("/content/Projet-Datascience/Weights/Colorization_Weights.h5")
 
         color_me = gray2rgb(rgb2gray(sample))
         color_me_embed = create_inception_embedding(color_me)
