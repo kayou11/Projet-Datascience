@@ -98,14 +98,16 @@ def Colorize():
     decoder_output = UpSampling2D((2, 2))(decoder_output)
     return Model(inputs=[encoder_input, embed_input], outputs=decoder_output)
 
-def get_model():
+def get_inception():
     inception = InceptionResNetV2(weights=None, include_top=True)
     #inception.load_weights('../content/Model/inception_resnet_v2_weights_tf_dim_ordering_tf_kernels.h5')
     inception.graph = tf.get_default_graph()
+    return inception, inception.graph
+
+def get_model():
     model = Colorize()
     model.compile(optimizer='adam', loss='mean_squared_error')
     model.summary()
-
     return model
 
 def data_generator():
@@ -120,6 +122,9 @@ def data_generator():
 
 #Create embedding
 def create_inception_embedding(grayscaled_rgb):
+
+    inception, inception.graph = get_inception()
+
     def resize_gray(x):
         return resize(x, (299, 299, 3), mode='constant')
     grayscaled_rgb_resized = np.array([resize_gray(x) for x in grayscaled_rgb])
@@ -176,8 +181,9 @@ class colorGen():
         model.save_weights("/content/Weights/Colorization_Weights.h5")
 
 
-    def test(self, sample):
+    def test(self, X_test):
 
+        sample = X_test
         model = load_model("/content/Projet-Datascience/Weights/Colorization_Model.h5")
         model.load_weights("/content/Projet-Datascience/Weights/Colorization_Weights.h5")
 
@@ -200,7 +206,7 @@ class colorGen():
 
 
         plt.figure(figsize=(20, 6))
-        for i in range(10):
+        for i in range(len(X_test)):
             # grayscale
             plt.subplot(3, 10, i + 1)
             plt.imshow(rgb2gray(X_test)[i].reshape(256, 256))
