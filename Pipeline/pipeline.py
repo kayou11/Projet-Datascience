@@ -12,9 +12,8 @@ from tqdm import tqdm_notebook as tqdm
 from Pipeline.Degradation import UglyImage
 
 class Pipeline():
-    def __init__(self, dataset_name = 'train2014', img_size=(512, 512)): # no *args or **kargs
+    def __init__(self, dataset_name = 'train2014'): # no *args or **kargs
         self.dataset_name = dataset_name
-        self.img_size = img_size
 
     def create_tree_directories(self):
         os.system('mkdir Train')
