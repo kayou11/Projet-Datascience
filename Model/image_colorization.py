@@ -225,3 +225,5 @@ class colorGen():
  
             plt.tight_layout()
             plt.show()
+        
+        return output
