@@ -177,7 +177,7 @@ class colorGen():
         model.save_weights("/content/Weights/Colorization_Weights.h5")
 
 
-    def test(sample):
+    def test(self, sample):
 
         model = load_model("/content/Projet-Datascience/Weights/Colorization_Model.h5")
         model.load_weights("/content/Projet-Datascience/Weights/Colorization_Weights.h5")
