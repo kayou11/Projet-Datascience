@@ -53,12 +53,11 @@ def get_data():
     filenames = os.listdir(TRAIN_PATH)
     filenames = filenames[:99]
 
-    for filename in filenames:
-        for i in range(len(filenames)):
-            img = imread(TRAIN_PATH + filename)
-            img = resize(img, (IMG_HEIGHT, IMG_WIDTH), mode='constant', preserve_range=True)
-            X_train[i] =img
-        X_train = X_train.astype('float32') / 255.
+    for i in range(len(filenames)):  
+        img = imread(TRAIN_PATH + filenames[i])
+        img = resize(img, (IMG_HEIGHT, IMG_WIDTH), mode='constant', preserve_range=True)
+        X_train[i] =img
+    X_train = X_train.astype('float32') / 255.
     X_train, X_test = train_test_split(X_train, test_size=10, random_state=seed)
 
     return X_train
