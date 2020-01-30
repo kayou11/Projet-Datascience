@@ -167,6 +167,174 @@ class Pix2Pix():
 
     # Discriminators determines validity of translated images / condition pairs
     valid = self.discriminator([fake_clean_image, degraded_image])
+from __future__ import print_function, division
+import numpy as np 
+import pandas as pd 
+import scipy
+from glob import glob
+import numpy as np
+import matplotlib.pyplot as plt
+from skimage import transform
+
+from keras.layers import Input, Dense, Reshape, Flatten, Dropout, Concatenate
+from keras.layers import BatchNormalization, Activation, ZeroPadding2D
+from keras.layers.advanced_activations import LeakyReLU
+from keras.layers.convolutional import UpSampling2D, Conv2D
+from keras.models import Sequential, Model, load_model
+from keras.optimizers import Adam
+import datetime
+import sys
+import os
+#from imageio import imread
+import imageio
+from PIL import ImageChops
+
+import math, operator
+#sys.path.append("/content/drive/My Drive/Projet DataScience")
+sys.path.append("/content/drive/My Drive/CESI/Projets A5/Data Science/Projet DataScience") #Path Kayou
+from Pipeline.Degradation import UglyImage
+
+class DataLoader():
+  def __init__(self, img_res=(128,128)):
+    self.img_res = img_res
+    #self.train_path_files = '/content/drive/My Drive/Projet DataScience/Data/Train/dataset_clean_degraded'
+    #self.val_path_files = '/content/drive/My Drive/Projet DataScience/Data/Val/'
+
+    #Path Kayou
+    self.train_path_files = '/content/drive/My Drive/CESI/Projets A5/Data Science/Projet DataScience/Data/Train/dataset_clean_degraded'
+    self.val_path_files = '/content/drive/My Drive/CESI/Projets A5/Data Science/Projet DataScience/Data/Val'
+
+  def load_data(self, batch_size=1, is_val=True):
+    """
+    Return couples of images to visualize progress of the networks after epochs
+    """
+    
+    path_files = self.train_path_files if not is_val else self.val_path_files
+
+    clean_images = []
+    degraded_images = []
+    
+    files = os.listdir(path_files + '/clean/')
+    batch_images = np.random.choice(files, size=batch_size)
+
+    for image in batch_images:
+      clean = self.imread(path_files + '/clean/' + image)
+      degraded = self.imread(path_files + '/degraded/' + image)
+
+      # Decrease resolution
+      clean = transform.resize(clean, self.img_res)
+      degraded = transform.resize(degraded, self.img_res)
+
+      # Data augmentation
+      #if not is_val and np.random.random() < 0.5:
+      #  clean_images = np.fliplr(clean_images)
+      #  degraded_images = np.fliplr(degraded_images)
+
+      clean_images.append(clean)
+      degraded_images.append(degraded)
+
+    #normalizing images
+    clean_images = np.array(clean_images)/127.5 - 1.
+    degraded_images = np.array(degraded_images)/127.5 -1.
+
+    return clean_images, degraded_images
+
+  def load_batch(self, batch_size=1, is_val=False):
+    """
+    Same function as load_data except for the fact that is used during training to load image in batches
+    """
+    
+    path_files = self.train_path_files if not is_val else self.val_path_files
+
+    n_batches = batch_size
+    files = os.listdir(path_files + '/clean/')
+
+    ugly = UglyImage(path=path_files + '/clean/', image_size=self.img_res)
+
+    for i in range(n_batches):
+      batch = files[i*batch_size:(i+1)*batch_size]
+      
+      #gen_data = ugly.loadImg(batch)
+      #degraded_images, clean_images = next(gen_data)
+      clean_images = []
+      degraded_images = []
+
+      for image in batch:
+        clean_image_path = str(path_files + '/clean/' + image)
+        degraded, clean = ugly.uglifyImage(clean_image_path)
+ #       clean_image_path = str(path_files + '/clean/' + image)
+ #       clean = self.imread(clean_image_path)
+ #       degraded_image_path = str(path_files + '/degraded/' + image)
+ #       degraded = self.imread(degraded_image_path)
+
+        # decrease resolution
+ #       clean = transform.resize(clean, self.img_res)
+ #       degraded = transform.resize(degraded, self.img_res)
+
+        # Data augmentation, trick to avoid overfitting
+        #if not is_val and np.random.random() < 0.5:
+        #  clean_images = np.fliplr(clean_images)
+        #  degraded_images = np.fliplr(degraded_images)
+        
+        clean_images.append(clean)
+        degraded_images.append(degraded)
+
+      #normalizing images
+      clean_images = np.array(clean_images)/127.5 - 1.
+      degraded_images = np.array(degraded_images)/127.5 -1.
+
+      yield clean_images, degraded_images
+
+  def imread(self, path):
+    return imageio.imread(path).astype(np.float)
+
+class Pix2Pix():
+  def __init__(self, img_rows=128, img_cols=128, channels=3):
+    # Input shape
+    self.img_rows = img_rows
+    self.img_cols = img_cols
+    self.channels = channels
+
+    self.img_shape = (self.img_rows, self.img_cols, self.channels)
+
+    # Configure DataLoader
+    self.data_loader = DataLoader(img_res=(self.img_rows, self.img_cols))
+
+    # Calculate output shape of D (PatchGAN)
+    patchrows = int(self.img_rows / 2**4)
+    patchcols = int(self.img_cols / 2**4)
+    self.disc_patch = (patchrows, patchcols, 1)
+
+    # Number of filters in the first layer of G and D
+    self.gf = 64
+    self.df = 64
+
+    optimizer = Adam(0.0002, 0.5)
+
+    self.generator_weights_filepath = 'weights_generator.h5'
+    self.discriminator_weights_filepath = 'weights_discriminator.h5'
+
+    # Build and compile the discriminator
+    self.discriminator = self.build_discriminator()
+    self.discriminator.compile(loss='mse',
+                optimizer=optimizer,
+                metrics=['accuracy'])
+
+    # Build the generator
+    self.generator = self.build_generator()
+
+    # Input images and their conditioning images
+    clean_image = Input(shape=self.img_shape)
+    degraded_image = Input(shape=self.img_shape)
+
+    # By conditioning on degraded_image generate a fake version of clean_image
+    fake_clean_image = self.generator(degraded_image)
+
+    # For the combined model we will only train the generator
+    self.discriminator.trainable = False
+
+    # Discriminators determines validity of translated images / condition pairs
+    valid = self.discriminator([fake_clean_image, degraded_image])
 
     self.combined = Model(inputs=[clean_image, degraded_image], outputs=[valid, fake_clean_image])
     self.combined.compile(loss=['mse', 'mae'],
@@ -306,6 +474,45 @@ class Pix2Pix():
           else:
             pass
 
+  def mse(self, imageA, imageB):
+    err = np.sum((imageA.astype("float") - imageB.astype("float")) ** 2)
+    err /= float(imageA.shape[0] * imageA.shape[1])
+    
+    return err
+
+  def rms_diff(im1, im2):
+    "Calculate the root-mean-square difference between two images"
+
+    h = ImageChops.difference(im1, im2).histogram()
+    rmsdiff = math.sqrt(reduce(operator.add, map(lambda h, i: h*(i**2), h, range(256)) / (float(im1.size[0]) * im1.size[1])))
+    print("RMS diff : " + rmsdiff +"% \n")
+    # calculate rms
+    return diff
+
+  def get_improve_message(self, clean_images, degraded_images, fake_clean_images):
+    
+    improve_message = "Les images ont été améliorées de : \n"
+
+    for i in range(0, 3):
+      clean_image = clean_images[i]
+      degraded_image = degraded_images[i]
+      fake_clean_image = fake_clean_images[i]
+
+      #loss_clean_degraded = ((clean_image - degraded_image)**2).mean(axis=ax)
+      loss_clean_degraded = self.mse(clean_image, degraded_image)
+      #print("loss_clean_degraded : " + str(loss_clean_degraded))
+      #loss_predict_orginal = ((fake_clean_image - clean_image)**2).mean(axis=ax)
+      loss_predict_original = self.mse(fake_clean_image, clean_image)
+      #print("loss_predict_original : " + str(loss_predict_original))
+      #loss_diff = (loss_predict_orginal / loss_clean_degraded)*100
+      loss_diff = float(loss_clean_degraded)/float(loss_predict_original) * 100
+      #print("loss diff : "+ str(loss_diff))
+      #print(self.rms_diff(clean_image, fake_clean_image))
+      improve_message += ("Image " + str(i) + ": "+ str(round(loss_diff,2)) + " % \n")
+
+    return improve_message
+
+
   def show_images(self, epoch, batch_i):
         
     r, c = 3, 3
@@ -328,6 +535,7 @@ class Pix2Pix():
         axs[i, j].set_title(titles[i])
         axs[i,j].axis('off')
         cnt += 1
+    print(self.get_improve_message(clean_images, degraded_images, fake_clean_images))
     plt.show()
     plt.close()
 
