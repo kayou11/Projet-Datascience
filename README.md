@@ -57,7 +57,7 @@ Nous avons donc construit une classe permettant de dégrader une image de maniè
 
 
 ### Entrainement
-Pour cette exemple, nous avons entrainé le model sur 100 epochs avec un batch_size de 32.
+Pour cette exemple, nous avons entrainé le model sur 100 epochs avec un batch_size de 32.<br />
 A la 63e epoch nous constatons que nous avons une amélioration visuelle de notre image.
 <p align="center">
   <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/before.PNG" width="200" title="hover text">
