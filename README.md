@@ -7,6 +7,6 @@
   :bar_chart: CESI Bordeaux - Options <strong>Data Science</strong>!
   <br><br>
   <a href="https://github.com/Pielgrin">
-    <img alt="Pierre P. Github" src="https://img.shields.io/badge/OSSU-data--science-blue.svg">
+    <img alt="Pierre P. Github" src="https://avatars3.githubusercontent.com/u/18363758?s=400&v=4">
   </a>
 </p>
