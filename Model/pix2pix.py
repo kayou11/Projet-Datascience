@@ -40,12 +40,12 @@ class DataLoader():
   def __init__(self, img_res=(128,128)):
     self.img_res = img_res
     #Path Pierre
-    self.train_path_files = '/content/drive/My Drive/Projet DataScience/Data/Train/dataset_clean_degraded'
-    self.val_path_files = '/content/drive/My Drive/Projet DataScience/Data/Val/'
+    #self.train_path_files = '/content/drive/My Drive/Projet DataScience/Data/Train/dataset_clean_degraded'
+    #self.val_path_files = '/content/drive/My Drive/Projet DataScience/Data/Val/'
 
-    #Path Kayou
-    #self.train_path_files = '/content/drive/My Drive/CESI/Projets A5/Data Science/Projet DataScience/Data/Train/dataset_clean_degraded'
-    #self.val_path_files = '/content/drive/My Drive/CESI/Projets A5/Data Science/Projet DataScience/Data/Val'
+    #Path workflow
+    self.train_path_files = '/content/Train'
+    self.val_path_files = '/content/Val'
 
   def load_data(self, batch_size=1, is_val=True):
     """
