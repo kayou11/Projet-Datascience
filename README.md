@@ -55,12 +55,16 @@ Nous avons donc construit une classe permettant de dégrader une image de maniè
 
 ### Model
 Pour le model, nous avons choisi d'implémenter **Pix2pix** un model GAN (Generative Adversarial Networks).
-L'idée derrière un GAN est que l'on a deux réseaux, un **Générateur** et un **Discriminateur**, en concurrence l'un avec l'autre. Le générateur fabrique de fausses données à transmettre au discriminateur. Le discriminateur voit également les données réelles et prédit si les données qu'il reçoit sont réelles ou fausses. Le générateur est formé pour tromper le discriminateur, il veut produire des données qui ressemblent le plus possible à des données réelles. Et le discriminateur est formé pour savoir quelles données sont réelles et quelles données sont fausses. En fin de compte, le générateur apprend à fournir au discriminateur des données impossibles à distinguer des données réelles.
+L'idée derrière un GAN est que l'on a deux réseaux, un **Générateur** et un **Discriminateur**, en concurrence l'un avec l'autre.<br />
+Le générateur fabrique de fausses données à transmettre au discriminateur. Le discriminateur voit également les données réelles et prédit si les données qu'il reçoit sont réelles ou fausses. 
+Le générateur est formé pour tromper le discriminateur, il veut produire des données qui ressemblent le plus possible à des données réelles. Et le discriminateur est formé pour savoir quelles données sont réelles et quelles données sont fausses. 
+En fin de compte, le générateur apprend à fournir au discriminateur des données impossibles à distinguer des données réelles.
 <br><br>
 <p align="center">
-  <img src="https://miro.medium.com/max/1428/1*M2Er7hbryb2y0RP1UOz5Rw.png" width="350" title="hover text">
+  <img src="https://miro.medium.com/max/1428/1*M2Er7hbryb2y0RP1UOz5Rw.png" width="450" title="hover text">
 </p>
 <br><br>
+
 ### Entrainement
 Pour cette exemple, nous avons entrainé le model sur 100 epochs avec un batch_size de 32.<br />
 A la 63e epoch nous constatons que nous avons une amélioration visuelle de notre image.
