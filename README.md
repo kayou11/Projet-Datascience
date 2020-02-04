@@ -21,9 +21,9 @@
 ## Contents
 
 - [Context](#context)
-- [Le Projet](#projet)
-- [Workflow d'entrainement](#workflow-entrainement)
-- [Workflow d'utilisation](#workflow-utilisation)
+- [Le Projet](#le-projet)
+- [Workflow Entrainement](#workflow-entrainement)
+- [Workflow Utilisation](#workflow-utilisation)
 
 ## Context
 
@@ -57,13 +57,15 @@ Nous avons donc construit une classe permettant de dégrader une image de maniè
 
 
 ### Entrainement
-
-![Before](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/before.PNG)
-![After](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/after.PNG)
+<p align="center">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/before.PNG" width="250" title="hover text">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/after.PNG" width="250" title="hover text">
+</p>
 <br><br>
+
 ![Metrics](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/metrics.PNG)
 
 ### Résultats
 
-## Le Workflow d'entrainement
-## Le Workflow d'utilisation
+## Le Workflow Entrainement
+## Le Workflow Utilisation
