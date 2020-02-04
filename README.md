@@ -27,7 +27,33 @@
 - [Résultats](#results)
 
 ## Context
+
+L’entreprise TouNum travaille sur la numérisation des vieilles cassettes vidéo. Des historiens ont fait
+appel à eux pour un projet de recherche de la plus haute importance sur l’analyse de certaines vidéos
+historiques au format PAL qu’ils détiennent sur des cassettes vidéo VHS. Ils ont besoin d’une version
+numériques de haute qualité d’image pour leur projet. Or, ces images nécessitent une forte
+amélioration. TouNum aimerait, dans un premier temps, répondre à cette demande qui nécessite de
+la restauration d’images mais pas nécessairement de vidéos dans leur ensemble, pour ensuite
+adapter son produit pour toucher un plus grand public en restaurant des vidéos.
+
+On nous propose un premier contrat pour travailler sur une solution visant à améliorer la qualité
+d’images PAL issues de la numérisation de vidéos stockées sur cassettes VHS. Ces images ont non
+seulement une faible résolution (avec des pixels non carrés, ce qui n’aide pas), mais elles ont de
+nombreux problèmes de qualité (grain analogique, top-screen tearing, jitter horizontal, aberrations
+chromatiques, sous-échantillonnage de la chrominance et de la luminance…), qui apparaissent de
+manière plus ou moins aléatoire.
+
 ## Preprocessing
+### Data
+
+Les images qui nous ont été fourni proviennent du dataset COCO.
+Un dataset est **clean**, l'autre **degraded** comme cité ci-dessus et comporte chacun 4500 images.
+
+Nous nous sommes servis du datset **clean** pour entrainer notre model. 
+En effet, nous avons décidé de dégrader nous même les images à la volé selon le nombre d'entrainement **(epochs)** que nous souhaitions exectuer mais aussi pour faire correspondre correctement les images entre elles.
+
+Nous avons donc construit une classe permettant de dégrader une image de manière à se rapprocher des dégradations sur les images du dataset **degraded**.
+
 ## Model
 ## Entrainement
 ## Résultats
