@@ -52,6 +52,11 @@ Nous nous sommes servis du dataset **clean** pour entrainer notre model.
 En effet, nous avons décidé de dégrader nous même les images à la volée selon le nombre d'entrainement **(epochs)** que nous souhaitions effectuer mais aussi pour faire correspondre correctement les images entre elles.
 
 Nous avons donc construit une classe permettant de dégrader une image de manière à se rapprocher des dégradations présentent sur les images du dataset **degraded**.
+<p align="center">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/clean.jpg" width="200" title="hover text">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/degraded.jpg" width="200" title="hover text">
+</p>
+<br><br>
 
 ### Model
 Pour le model, nous avons choisi d'implémenter **Pix2pix** un model GAN (Generative Adversarial Networks).
