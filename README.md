@@ -21,10 +21,9 @@
 ## Contents
 
 - [Context](#context)
-- [Preprocessing](#prepocessing)
-- [Model](#model)
-- [Entrainement](#training)
-- [Résultats](#results)
+- [Le projet](#projet)
+- [Workflow d'entrainement](#workflow-entrainement)
+- [Workflow d'utilisation](#workflow-utilisation)
 
 ## Context
 
@@ -43,17 +42,24 @@ nombreux problèmes de qualité (grain analogique, top-screen tearing, jitter ho
 chromatiques, sous-échantillonnage de la chrominance et de la luminance…), qui apparaissent de
 manière plus ou moins aléatoire.
 
-## Preprocessing
+## Le projet
 ### Data
 
-Les images qui nous ont été fourni proviennent du dataset COCO.
+Les images qui nous ont été fournies proviennent du dataset COCO.
 Un dataset est **clean**, l'autre **degraded** comme cité ci-dessus et comporte chacun 4500 images.
 
-Nous nous sommes servis du datset **clean** pour entrainer notre model. 
-En effet, nous avons décidé de dégrader nous même les images à la volé selon le nombre d'entrainement **(epochs)** que nous souhaitions exectuer mais aussi pour faire correspondre correctement les images entre elles.
+Nous nous sommes servis du dataset **clean** pour entrainer notre model. 
+En effet, nous avons décidé de dégrader nous même les images à la volée selon le nombre d'entrainement **(epochs)** que nous souhaitions exectuer mais aussi pour faire correspondre correctement les images entre elles.
 
-Nous avons donc construit une classe permettant de dégrader une image de manière à se rapprocher des dégradations sur les images du dataset **degraded**.
+Nous avons donc construit une classe permettant de dégrader une image de manière à se rapprocher des dégradations présentent sur les images du dataset **degraded**.
 
-## Model
-## Entrainement
-## Résultats
+### Model
+
+
+### Entrainement
+
+
+### Résultats
+
+## Le Workflow d'entrainement
+## Le Workflow d'utilisation
