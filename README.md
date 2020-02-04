@@ -21,7 +21,7 @@
 ## Contents
 
 - [Context](#context)
-- [Le projet](#projet)
+- [Le Projet](#projet)
 - [Workflow d'entrainement](#workflow-entrainement)
 - [Workflow d'utilisation](#workflow-utilisation)
 
