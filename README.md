@@ -72,7 +72,7 @@ Cependant lorsque nous affichons les distances de Manhattan (L1) et Euclidienne 
 
 Et nous constatons également qu'à la fin de l'entrainement, sur ces deux même distances, que les images se sont en moyenne plus dégradées qu'améliorées.
 <br><br>
-![Metrics](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/metrics.PNG)
+![Metrics](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/metrics2.PNG)
 
 ## Le Workflow Entrainement
 ## Le Workflow Utilisation
