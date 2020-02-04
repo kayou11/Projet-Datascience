@@ -69,16 +69,20 @@ Cependant lorsque nous affichons les distances de Manhattan (L1) et Euclidienne 
 <br><br>
 ![Metrics](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/metrics.PNG)
 <br><br>
-
 Et nous constatons également qu'à la fin de l'entrainement, sur ces deux même distances, les images se sont en moyenne plus dégradées qu'améliorées.
 <br><br>
 ![Metrics](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/metrics2.PNG)
 
 ## Le Workflow Entrainement
 
-Pour utiliser le workflow d'entrainement, il vous faut télécharger le fichier **Workflow_Entrainement_Model.ipynb** ci-dessus et l'ouvrir avec <a href="https://colab.research.google.com/notebooks/intro.ipynb#recent=true">Google Colab</a>.<br />
+Pour utiliser le workflow d'entrainement, il faut télécharger le fichier **Workflow_Entrainement_Model.ipynb** ci-dessus et l'ouvrir avec <a href="https://colab.research.google.com/notebooks/intro.ipynb#recent=true">Google Colab</a>.<br />
 <p align="center">
   <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/colab.PNG" title="hover text">
 </p>
-
+<br><br>
+Ensuite, vous arriverez sur la page du notebook que vous pourrez executer en cliquant sur l'onglet **Execution** puis sur **Tout Executer**.<br />
+<p align="center">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/colab2.PNG" title="hover text">
+</p>
+<br><br>
 ## Le Workflow Utilisation
