@@ -8,7 +8,7 @@
   <br><br>
 </p>
 
-## Contributors
+## Contributeurs
 [//]: contributor-faces
 
 <a href="https://github.com/Pielgrin"><img src="https://avatars3.githubusercontent.com/u/18363758?s=400&v=4" title="Pielgrin" width="80" height="80"></a>
@@ -17,3 +17,17 @@
 <a href="https://github.com/kayou11"><img src="https://avatars1.githubusercontent.com/u/16228196?s=460&v=4" title="Kayou" width="80" height="80"></a>
 
 [//]: contributor-faces
+
+## Contents
+
+- [Context](#context)
+- [Preprocessing](#prepocessing)
+- [Model](#model)
+- [Entrainement](#training)
+- [Résultats](#results)
+
+## Context
+## Preprocessing
+## Model
+## Entrainement
+## Résultats
