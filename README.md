@@ -58,15 +58,20 @@ Nous avons donc construit une classe permettant de dégrader une image de maniè
 
 ### Entrainement
 Pour cette exemple, nous avons entrainé le model sur 100 epochs avec un batch_size de 32.
-
 A la 63e epoch nous constatons que nous avons une amélioration visuelle de notre image.
 <p align="center">
-  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/before.PNG" width="128" title="hover text">
-  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/after.PNG" width="128" title="hover text">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/before.PNG" width="200" title="hover text">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/after.PNG" width="200" title="hover text">
 </p>
 <br><br>
 
 Cependant lorsque nous affichons les distances de Manhattan (L1) et Euclidienne (L2), nous constatons que les images se sont en réalité détériorées.
+<br><br>
+![Metrics](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/metrics.PNG)
+<br><br>
+
+Et nous constatons également qu'à la fin de l'entrainement, sur ces deux même distances, que les images se sont en moyenne plus dégradées qu'améliorées.
+<br><br>
 ![Metrics](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/metrics.PNG)
 
 ## Le Workflow Entrainement
