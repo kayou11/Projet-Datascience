@@ -80,7 +80,7 @@ Pour utiliser le workflow d'entrainement, il faut télécharger le fichier **Wor
   <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/colab.PNG" title="hover text">
 </p>
 <br><br>
-Ensuite, vous arriverez sur la page du notebook que vous pourrez executer en cliquant sur l'onglet **Execution** puis sur **Tout Executer**.<br />
+Ensuite, vous arriverez sur la page du notebook que vous pourrez executer en cliquant sur l'onglet "Execution" puis sur "Tout Executer".<br />
 <p align="center">
   <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/colab2.PNG" title="hover text">
 </p>
