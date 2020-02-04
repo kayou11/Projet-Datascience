@@ -54,7 +54,7 @@ En effet, nous avons décidé de dégrader nous même les images à la volée se
 Nous avons donc construit une classe permettant de dégrader une image de manière à se rapprocher des dégradations présentent sur les images du dataset **degraded**.
 
 ### Model
-Pour le model, nous avons choisi d'implémenter **Pix2pix** un model qui est composé d'un **générateur** d'image et d'un **discriminateur**. Ce dernier nous sert à savoir si l'image générée est correct ou non à l'image **clean** et si ce n'est pas le cas le model refait des itérations jusqu'à s'approcher le maximum de l'image **clean**.
+Pour le model, nous avons choisi d'implémenter **Pix2pix** un model qui est composé d'un **générateur** d'image et d'un **discriminateur**. Ce dernier nous sert à savoir si l'image générée est proche ou non de l'image **clean** et si ce n'est pas le cas le model refait des itérations jusqu'à s'approcher au maximum de l'image **clean**.
 
 ### Entrainement
 Pour cette exemple, nous avons entrainé le model sur 100 epochs avec un batch_size de 32.<br />
