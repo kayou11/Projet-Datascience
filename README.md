@@ -76,5 +76,9 @@ Et nous constatons également qu'à la fin de l'entrainement, sur ces deux même
 
 ## Le Workflow Entrainement
 
+Pour utiliser le workflow d'entrainement, il vous faut télécharger le fichier **Workflow_Entrainement_Model.ipynb** ci-dessus et l'ouvrir avec <a href="https://colab.research.google.com/notebooks/intro.ipynb#recent=true">Google Colab</a>.<br />
+<p align="center">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/colab.PNG" width="200" title="hover text">
+</p>
 
 ## Le Workflow Utilisation
