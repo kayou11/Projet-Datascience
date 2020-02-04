@@ -6,6 +6,7 @@
 <p align="center">
   :bar_chart: CESI Bordeaux - Options <strong>Data Science</strong>!
   <br><br>
+  ## Contributors
   [//]: contributor-faces
 
   <a href="https://github.com/Pielgrin"><img src="https://avatars3.githubusercontent.com/u/18363758?s=400&v=4" title="Pielgrin" width="80" height="80"></a>
