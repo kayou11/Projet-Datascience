@@ -60,6 +60,7 @@ Nous avons donc construit une classe permettant de dégrader une image de maniè
 
 ![Before](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/before.PNG)
 ![After](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/after.PNG)
+<br><br>
 ![Metrics](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/metrics.PNG)
 
 ### Résultats
