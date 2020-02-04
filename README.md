@@ -42,7 +42,7 @@ nombreux problèmes de qualité (grain analogique, top-screen tearing, jitter ho
 chromatiques, sous-échantillonnage de la chrominance et de la luminance…), qui apparaissent de
 manière plus ou moins aléatoire.
 
-## Le projet
+## Le Projet
 ### Data
 
 Les images qui nous ont été fournies proviennent du dataset COCO.
@@ -58,6 +58,9 @@ Nous avons donc construit une classe permettant de dégrader une image de maniè
 
 ### Entrainement
 
+![Before](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/before.PNG)
+![After](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/after.PNG)
+![Metrics](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/metrics.PNG)
 
 ### Résultats
 
