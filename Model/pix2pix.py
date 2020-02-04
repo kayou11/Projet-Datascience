@@ -124,13 +124,6 @@ class DataLoader():
 
       #normalizing images
       clean_images = np.array(clean_images)/127.5 - 1.
-      degraded_images = np.array(degraded_images)/127.5 -1.
-
-      yield clean_images, degraded_images
-
-  def imread(self, path):
-    return imageio.imread(path).astype(np.float)
-
 class Pix2Pix():
   def __init__(self, img_rows=128, img_cols=128, channels=3):
     # Input shape
@@ -279,6 +272,10 @@ class Pix2Pix():
     e_norm = np.sqrt(sum(diff**2)) # Euclidean norm or L2
     return (m_norm, e_norm)
 
+  def ssim(self, img1, img2):
+    similarity = ssim(img1, img2)
+    return similarity
+
   def to_grayscale(self, arr):
     "If arr is a color image (3D array), convert it to grayscale (2D array)."
     if len(arr.shape) == 3:
@@ -304,7 +301,7 @@ class Pix2Pix():
       degraded_image = self.to_grayscale(degraded_images[i].astype(float))
       fake_clean_image = self.to_grayscale(fake_clean_images[i].astype(float))
 
-      l1_distance_clean_degraded, l2_distance_clean_degraded = self.compare_images(clean_image, degraded_image)
+      l1_distance_clean_degraded, l2_distance_clean_degraded = self.compare_images(degraded_image, clean_image)
       l1_distance_predict_clean, l2_distance_predict_clean = self.compare_images(fake_clean_image, clean_image)
 
       l1_diff = float(l1_distance_clean_degraded)/float(l1_distance_predict_clean) * 100
@@ -351,7 +348,11 @@ class Pix2Pix():
       clean_image = self.to_grayscale(clean_images[i].astype(float))
       degraded_image = self.to_grayscale(degraded_images[i].astype(float))
       fake_clean_image = self.to_grayscale(fake_clean_images[i].astype(float))
-
+      
+      ssim_original = self.ssim(clean_image, clean_image)
+      ssim_clean_degraded = self.ssim(clean_image, degraded_image)
+      ssim_predict_clean = self.ssim(clean_image, fake_clean_image)
+      '''
       l1_distance_clean_degraded, l2_distance_clean_degraded = self.compare_images(clean_image, degraded_image)
       l1_distance_predict_clean, l2_distance_predict_clean = self.compare_images(fake_clean_image, clean_image)
 
@@ -369,6 +370,10 @@ class Pix2Pix():
       
       improve_message += ("Selon L1, l'image " + str(i) + ": s'est "+ l1_is_quality_better + " de " + str(round(l1_diff,2)) + " % \n ")
       improve_message += ("Selon L2, l'image " + str(i) + ": s'est "+ l2_is_quality_better + " de " + str(round(l2_diff,2)) + " % \n\n ")
+      '''
+      improve_message += ("\nImage " + str(i) + " SSIM original : " + str(ssim_original) + "\n")
+      improve_message += ("Image " + str(i) + " SSIM predict-degraded : " + str(ssim_clean_degraded) + "\n")
+      improve_message += ("Image " + str(i) + " SSIM predict-clean : " + str(ssim_predict_clean) + "\n\n")
 
     return improve_message
   
