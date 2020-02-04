@@ -49,7 +49,7 @@ Les images qui nous ont été fournies proviennent du dataset COCO.
 Un dataset est **clean**, l'autre **degraded** comme cité ci-dessus et comporte chacun 4500 images.
 
 Nous nous sommes servis du dataset **clean** pour entrainer notre model. 
-En effet, nous avons décidé de dégrader nous même les images à la volée selon le nombre d'entrainement **(epochs)** que nous souhaitions exectuer mais aussi pour faire correspondre correctement les images entre elles.
+En effet, nous avons décidé de dégrader nous même les images à la volée selon le nombre d'entrainement **(epochs)** que nous souhaitions effectuer mais aussi pour faire correspondre correctement les images entre elles.
 
 Nous avons donc construit une classe permettant de dégrader une image de manière à se rapprocher des dégradations présentent sur les images du dataset **degraded**.
 
@@ -70,9 +70,11 @@ Cependant lorsque nous affichons les distances de Manhattan (L1) et Euclidienne 
 ![Metrics](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/metrics.PNG)
 <br><br>
 
-Et nous constatons également qu'à la fin de l'entrainement, sur ces deux même distances, que les images se sont en moyenne plus dégradées qu'améliorées.
+Et nous constatons également qu'à la fin de l'entrainement, sur ces deux même distances, les images se sont en moyenne plus dégradées qu'améliorées.
 <br><br>
 ![Metrics](https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/metrics2.PNG)
 
 ## Le Workflow Entrainement
+
+
 ## Le Workflow Utilisation
