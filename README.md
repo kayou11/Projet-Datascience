@@ -58,7 +58,7 @@ Pour le model, nous avons choisi d'implémenter **Pix2pix** un model GAN (Genera
 L'idée derrière un GAN est que l'on a deux réseaux, un **Générateur** et un **Discriminateur**, en concurrence l'un avec l'autre.<br />
 Le générateur fabrique de fausses données à transmettre au discriminateur. Le discriminateur voit également les données réelles et prédit si les données qu'il reçoit sont réelles ou fausses.<br />
 Le générateur est entraîné pour tromper le discriminateur, il veut produire des données qui ressemblent le plus possible à des données réelles. Et le discriminateur est entraîné pour savoir quelles données sont réelles et quelles données sont fausses.<br /> 
-En fin de compte, le générateur apprend à fournir au discriminateur des données impossibles à distinguer des données réelles.
+En fin de compte, le générateur apprend à fournir au discriminateur des données idéalement impossibles à distinguer des données réelles.
 <br><br>
 <p align="center">
   <img src="https://miro.medium.com/max/1428/1*M2Er7hbryb2y0RP1UOz5Rw.png" width="450" title="hover text">
