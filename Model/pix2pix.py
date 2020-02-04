@@ -363,7 +363,7 @@ class Pix2Pix():
       ssim_clean_degraded = self.ssim(clean_image, degraded_image)
       ssim_predict_clean = self.ssim(clean_image, fake_clean_image)
       '''
-      l1_distance_clean_degraded, l2_distance_clean_degraded = self.compare_images(clean_image, degraded_image)
+      l1_distance_clean_degraded, l2_distance_clean_degraded = self.compare_images(degraded_image, clean_image)
       l1_distance_predict_clean, l2_distance_predict_clean = self.compare_images(fake_clean_image, clean_image)
 
       l1_diff = float(l1_distance_clean_degraded)/float(l1_distance_predict_clean) * 100
