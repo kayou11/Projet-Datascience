@@ -49,6 +49,16 @@ class DataLoader():
     #Path workflow
     self.train_path_files = '/content/Train'
     self.val_path_files = '/content/Val'
+    
+  def intersection(self, lst1, lst2): 
+    result=[]
+    for i in lst2:
+        if isinstance(i,list):
+            result.append(intersect(lst1,i))
+        else:
+            if i in lst1:
+                 result.append(i)
+    return result
 
   def load_data(self, batch_size=1, is_val=True):
     """
