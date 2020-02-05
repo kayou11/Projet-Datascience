@@ -93,35 +93,30 @@ class DataLoader():
     path_files = self.train_path_files if not is_val else self.val_path_files
 
     n_batches = batch_size
-    files = os.listdir(path_files + '/clean/')
+    files_clean = os.listdir(path_files + '/clean/')
+    files_degraded = os.listdir(path_files + '/degraded/')
+    files = self.intersection(files_clean, files_degraded) 
 
     ugly = UglyImage(path=path_files + '/clean/', image_size=self.img_res)
 
-    for i in range(n_batches):
+    print("Load Batch")
+    for i in tqdm(range(n_batches)):
       batch = files[i*batch_size:(i+1)*batch_size]
-      
-      #gen_data = ugly.loadImg(batch)
-      #degraded_images, clean_images = next(gen_data)
+      #batch = np.random.choice(files, size=batch_size)
+
       clean_images = []
       degraded_images = []
 
       for image in batch:
-        clean_image_path = str(path_files + '/clean/' + image)
-        degraded, clean = ugly.uglifyImage(clean_image_path)
- #       clean_image_path = str(path_files + '/clean/' + image)
- #       clean = self.imread(clean_image_path)
- #       degraded_image_path = str(path_files + '/degraded/' + image)
- #       degraded = self.imread(degraded_image_path)
-
+        #clean_image_path = str(path_files + '/clean/' + image)
+        #degraded, clean = ugly.uglifyImage(clean_image_path)
+        clean = self.imread(path_files + '/clean/' + image)
+        degraded = self.imread(path_files + '/degraded/' + image)
+      
         # decrease resolution
- #       clean = transform.resize(clean, self.img_res)
- #       degraded = transform.resize(degraded, self.img_res)
+        clean = transform.resize(clean, self.img_res)
+        degraded = transform.resize(degraded, self.img_res)
 
-        # Data augmentation, trick to avoid overfitting
-        #if not is_val and np.random.random() < 0.5:
-        #  clean_images = np.fliplr(clean_images)
-        #  degraded_images = np.fliplr(degraded_images)
-        
         clean_images.append(clean)
         degraded_images.append(degraded)
 
