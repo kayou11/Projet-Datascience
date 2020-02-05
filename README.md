@@ -87,9 +87,23 @@ A la première epoch nous pouvons observer visuellement que le generateur a cré
 <br><br>
 
 Cela est confirmé par la mesure ci-dessous, le SSIM (Structural Similarity Index) qui nous sert à calculer la différence de structure entre deux images.<br />
-La mesure sort des résultats entre -1 et 1 et la valeur 1 correspond à deux images identiques, la valeur 0 à aucune similitude.
+La mesure sort des résultats entre -1 et 1. La valeur 1 correspond à deux images identiques et la valeur 0 à aucune similitude.
 <p align="center">
   <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/ssim1.png" width="400" title="image originale">
+</p>
+<br><br>
+
+Au bout de l'entrainement, à la 48e epoch, nous pouvons voir que notre générateur à créer une image qui visuellement se rapproche de l'image réelle même si il reste encore un peu de dégradation.
+<p align="center">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/original1.png" width="200" title="Image originale"> 
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/degrade2.png" width="200" title="Image dégradée">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/generated1.png" width="200" title="Image générée">
+</p>
+<br><br>
+
+Cependant, la mesure SSIM nous montre que l'image que nous avons générée est moins dégradée. 
+<p align="center">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/ssim2.png" width="400" title="image originale">
 </p>
 <br><br>
 
