@@ -14,6 +14,7 @@ from glob import glob
 import numpy as np
 import matplotlib.pyplot as plt
 from skimage import transform
+from tqdm import tqdm_notebook as tqdm
 
 from keras.layers import Input, Dense, Reshape, Flatten, Dropout, Concatenate
 from keras.layers import BatchNormalization, Activation, ZeroPadding2D
