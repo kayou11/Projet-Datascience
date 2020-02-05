@@ -34,6 +34,6 @@ class Pipeline():
     def download_git_data(self):
         url = "https://github.com/Pielgrin/dataset_clean_degraded.git"
         os.system('git clone %s' %url)
-        os.system('cp dataset_clean_degraded/degraded Train/degraded')
         os.system('mv dataset_clean_degraded Val')
         os.system('mv Val/test_degraded Test')
+        os.system('cp Val/degraded Train/degraded')
