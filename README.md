@@ -53,8 +53,8 @@ En effet, nous avons décidé de dégrader nous même les images à la volée se
 
 Nous avons donc construit une classe permettant de dégrader une image de manière à se rapprocher des dégradations présentent sur les images du dataset **degraded**.
 <p align="center">
-  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/clean.jpg" width="200" title="hover text">
-  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/degraded.jpg" width="200" title="hover text">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/clean.jpg" width="200" title="image clean">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/degraded.jpg" width="200" title="image degraded">
 </p>
 <br><br>
 
@@ -66,23 +66,24 @@ Le générateur est entraîné pour tromper le discriminateur, il veut produire 
 En fin de compte, le générateur apprend à fournir au discriminateur des données idéalement impossibles à distinguer des données réelles.
 <br><br>
 <p align="center">
-  <img src="https://miro.medium.com/max/1428/1*M2Er7hbryb2y0RP1UOz5Rw.png" width="450" title="hover text">
+  <img src="https://miro.medium.com/max/1428/1*M2Er7hbryb2y0RP1UOz5Rw.png" width="450" title="schéma d'un GAN">
 </p>
 <br><br>
 
 ### Entrainement
 
 
+
 ## Le Workflow Entrainement
 
 Pour utiliser le workflow d'entrainement, il faut télécharger le fichier **Workflow_Entrainement_Model.ipynb** ci-dessus et l'ouvrir avec <a href="https://colab.research.google.com/notebooks/intro.ipynb#recent=true">Google Colab</a>.<br />
 <p align="center">
-  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/colab.PNG" title="hover text">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/colab.PNG" title="Google Colab">
 </p>
 <br><br>
 Ensuite, vous arriverez sur la page du notebook que vous pourrez executer en cliquant sur l'onglet "Execution" puis sur "Tout Executer".<br />
 <p align="center">
-  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/colab2.PNG" title="hover text">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/colab2.PNG" title="Google Colab">
 </p>
 <br><br>
 
