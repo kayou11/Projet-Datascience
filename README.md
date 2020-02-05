@@ -80,21 +80,16 @@ Notre entrainement doit être donc assez long pour generer des images correct, m
 Nous avons donc choisi pour la démonstration, d'entrainer notre modèle sur 50 epochs et un batch de 32, ce qui correspond à environ 2h30 de calculs.<br />
 A la première epoch nous pouvons observer visuellement que le generateur a créé une image plus dégradée encore que l'image dégradée que l'on avait de base.
 <p align="center">
-  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/original.png" width="200" title="image originale"> 
-  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/degrade.png" width="200" title="image degraded">
-  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/generated.png" width="200" title="image generated">
-</p>
-<p align="center">
-  Image Orginale
-  Image Dégradée
-  Image générée
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/original.png" width="200" title="Image originale"> 
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/degrade.png" width="200" title="Image dégradée">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/generated.png" width="200" title="Image générée">
 </p>
 <br><br>
 
 Cela est confirmé par la mesure ci-dessous, le SSIM (Structural Similarity Index) qui nous sert à calculer la différence de structure entre deux images.<br />
 La mesure sort des résultats entre -1 et 1 et la valeur 1 correspond à deux images identiques, la valeur 0 à aucune similitude.
 <p align="center">
-  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/ssim1.png" width="200" title="image originale">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/ssim1.png" width="400" title="image originale">
 </p>
 <br><br>
 
