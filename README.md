@@ -101,11 +101,14 @@ Au bout de l'entrainement, à la 48e epoch, nous pouvons voir que notre généra
 </p>
 <br><br>
 
-Cependant, la mesure SSIM nous montre que l'image que nous avons générée est moins dégradée. 
+Et la mesure SSIM nous montre que l'image que nous avons générée est moins dégradée mathématiquement parlant.
 <p align="center">
   <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/ssim2.png" width="400" title="image originale">
 </p>
 <br><br>
+
+Après cet entraînement, nous pouvons dire que notre modèle n'est pas encore parfait et qu'il reste du travail.<br />
+Mais avec une optimisation au niveau des hyperparamètres (nombre d'epoch, taille du batch), du code et/ou avec une plus grosse puissance de calculs, nous pourrions avoir un modèle plus performant.
 
 ## Le Workflow Entrainement
 
