@@ -17,7 +17,6 @@ class Pipeline():
 
     def create_tree_directories(self):
         os.system('mkdir Train')
-        os.system('mkdir Train/degraded')
         os.system('mkdir Test')
         os.system('mkdir Weights')
             
@@ -35,5 +34,6 @@ class Pipeline():
     def download_git_data(self):
         url = "https://github.com/Pielgrin/dataset_clean_degraded.git"
         os.system('git clone %s' %url)
+        os.system('cp dataset_clean_degraded/degraded Train/degraded')
         os.system('mv dataset_clean_degraded Val')
         os.system('mv Val/test_degraded Test')
