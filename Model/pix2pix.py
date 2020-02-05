@@ -33,7 +33,7 @@ from skimage.metrics import structural_similarity as ssim
 
 import math, operator
 #sys.path.append("/content/drive/My Drive/Projet DataScience") #Path Pierre
-#sys.path.append("/content/drive/My Drive/CESI/Projets A5/Data Science/Projet DataScience") #Path Kayou
+sys.path.append("/content/drive/My Drive/CESI/Projets A5/Data Science/Projet DataScience") #Path Kayou
 from Pipeline.Degradation import UglyImage
 
 class DataLoader():
@@ -44,13 +44,13 @@ class DataLoader():
     #self.val_path_files = '/content/drive/My Drive/Projet DataScience/Data/Val/'
 
     #Path Kayou
-    #self.train_path_files = '/content/drive/My Drive/CESI/Projets A5/Data Science/Projet DataScience/Data/Train/dataset_clean_degraded'
-    #self.val_path_files = '/content/drive/My Drive/CESI/Projets A5/Data Science/Projet DataScience/Data/Val'
+    self.train_path_files = '/content/drive/My Drive/CESI/Projets A5/Data Science/Projet DataScience/Data/Train/dataset_clean_degraded'
+    self.val_path_files = '/content/drive/My Drive/CESI/Projets A5/Data Science/Projet DataScience/Data/Val'
 
     #Path workflow
-    self.train_path_files = '/content/Train'
-    self.val_path_files = '/content/Val'
-    
+    #self.train_path_files = '/content/Train'
+    #self.val_path_files = '/content/Val'
+
   def intersection(self, lst1, lst2): 
     result=[]
     for i in lst2:
@@ -81,11 +81,6 @@ class DataLoader():
       # Decrease resolution
       clean = transform.resize(clean, self.img_res)
       degraded = transform.resize(degraded, self.img_res)
-
-      # Data augmentation
-      #if not is_val and np.random.random() < 0.5:
-      #  clean_images = np.fliplr(clean_images)
-      #  degraded_images = np.fliplr(degraded_images)
 
       clean_images.append(clean)
       degraded_images.append(degraded)
@@ -356,7 +351,6 @@ class Pix2Pix():
   def validate(self, clean_images, degraded_images, fake_clean_images):
     '''Return improvment message if quality is better on 3 random images in validation set at the end of the epoch interval'''
     
-    #improve_message = "Les images ont été améliorées de : \n"
     improve_message = ""
 
     for i in range(0, len(clean_images)):
@@ -368,7 +362,7 @@ class Pix2Pix():
       ssim_original = self.ssim(clean_image, clean_image)
       ssim_clean_degraded = self.ssim(clean_image, degraded_image)
       ssim_predict_clean = self.ssim(clean_image, fake_clean_image)
-      '''
+      
       l1_distance_clean_degraded, l2_distance_clean_degraded = self.compare_images(degraded_image, clean_image)
       l1_distance_predict_clean, l2_distance_predict_clean = self.compare_images(fake_clean_image, clean_image)
 
@@ -384,11 +378,11 @@ class Pix2Pix():
       if l2_distance_predict_clean < l2_distance_clean_degraded:
         l2_is_quality_better = "améliorée"
       
-      improve_message += ("Selon L1, l'image " + str(i) + ": s'est "+ l1_is_quality_better + " de " + str(round(l1_diff,2)) + " % \n ")
-      improve_message += ("Selon L2, l'image " + str(i) + ": s'est "+ l2_is_quality_better + " de " + str(round(l2_diff,2)) + " % \n\n ")
-      '''
+      #improve_message += ("\nSelon L1, l'image " + str(i) + ": s'est "+ l1_is_quality_better + " de " + str(round(l1_diff,2)) + " % \n")
+      #improve_message += ("Selon L2, l'image " + str(i) + ": s'est "+ l2_is_quality_better + " de " + str(round(l2_diff,2)) + " % \n")
+      
       improve_message += ("\nImage " + str(i) + " SSIM original : " + str(ssim_original) + "\n")
-      improve_message += ("Image " + str(i) + " SSIM predict-degraded : " + str(ssim_clean_degraded) + "\n")
+      improve_message += ("Image " + str(i) + " SSIM clean-degraded : " + str(ssim_clean_degraded) + "\n")
       improve_message += ("Image " + str(i) + " SSIM predict-clean : " + str(ssim_predict_clean) + "\n\n")
 
     return improve_message
@@ -411,16 +405,14 @@ class Pix2Pix():
             # Condition on degraded_images and translated version
             fake_clean_images = self.generator.predict(degraded_images)
 
-            # Train the disciminators (orginal images = real / generated = Fake)
+            # Train the disciminators (original images = real / generated = Fake)
             d_loss_real = self.discriminator.train_on_batch([clean_images, degraded_images], valid)
             d_loss_fake = self.discriminator.train_on_batch([fake_clean_images, degraded_images], fake)
             d_loss = 0.5 * np.add(d_loss_real, d_loss_fake)
-
-
+            
             # Train generator
             g_loss = self.combined.train_on_batch([clean_images, degraded_images], [valid, clean_images])
             elapsed_time = datetime.datetime.now() - start_time
-        
         
         if epoch % show_interval == 0:
           # Plot the progress
@@ -458,7 +450,7 @@ class Pix2Pix():
     for i in range(r):
       for j in range(c):
         axs[i,j].imshow(gen_imgs[cnt])
-        axs[i, j].set_title(titles[i])
+        axs[i,j].set_title(titles[i])
         axs[i,j].axis('off')
         cnt += 1
     print(self.validate(clean_images, degraded_images, fake_clean_images))
