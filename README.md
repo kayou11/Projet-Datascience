@@ -77,10 +77,10 @@ Le générateur doit être capable de créer des images pour pouvoir tromper le 
 
 Notre entrainement doit être donc assez long pour generer des images correct, mais pas trop non plus puisque nous ne disposons pas de puissance de calculs nécessaire pour faire des entrainements de plus de 100 epochs.
 
-Nous avons donc choisi pour la démonstration, d'entrainer notre modèle sur 50 epochs et un batch de 32, ce qui correspond à environ 2h30 de calculs
-A la primère epoch nous pouvons observer visuellement que le generateur a créé une image plus dégradée encore que l'image dégradé que l'on avait de base.
+Nous avons donc choisi pour la démonstration, d'entrainer notre modèle sur 50 epochs et un batch de 32, ce qui correspond à environ 2h30 de calculs.<br />
+A la première epoch nous pouvons observer visuellement que le generateur a créé une image plus dégradée encore que l'image dégradé que l'on avait de base.
 <p align="center">
-  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/original.png" width="200" title="image originale">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/original.png" width="200" title="image originale"> Image Originale
   <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/degrade.png" width="200" title="image degraded">
   <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/generated.png" width="200" title="image generated">
 </p>
