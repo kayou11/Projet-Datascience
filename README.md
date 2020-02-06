@@ -134,12 +134,12 @@ De la même façon que le workflow d'entrainement, pour utiliser le workflow d'u
 
 Ensuite, avant d'executer le notebook, il faut importer les images à améliorer.<br />
 <p align="center">
-  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/import.PNG" title="Google Colab">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/import.png" title="Google Colab">
 </p>
 <br><br>
 
 Puis, il suffit maintenant d'indiquer dans la dernière cellule du notebook, l'emplacement des images et d'executer tout le notebook (Cf. la partie exécution du Workflow d'entrainement).<br />
 <p align="center">
-  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/utilisation.PNG" title="Google Colab">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/utilisation.png" title="Google Colab">
 </p>
 <br><br>
