@@ -126,7 +126,7 @@ Ensuite, vous arriverez sur la page du notebook que vous pourrez executer en cli
 
 ## Workflow Utilisation
 
-De la même façon que le workflow d'entrainement, pour utiliser le workflow d'utilisation, il faut téléchargé le fichier **Workflow_d'utilisation_Photo.ipynb** ci-dessus et l'ouvrir avec <a href="https://colab.research.google.com/notebooks/intro.ipynb#recent=true">Google Colab</a>.<br />
+De la même façon que le workflow d'entrainement, pour utiliser le workflow d'utilisation, il faut télécharger le fichier **Workflow_d'utilisation_Photo.ipynb** ci-dessus et l'ouvrir avec <a href="https://colab.research.google.com/notebooks/intro.ipynb#recent=true">Google Colab</a>.<br />
 <p align="center">
   <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/colab.PNG" title="Google Colab">
 </p>
