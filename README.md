@@ -26,8 +26,9 @@
 - [Workflow Entrainement](#workflow-entrainement)
 - [Workflow Utilisation](#workflow-utilisation)
 
-## Context
+## Contexte du projet
 
+  Dans le cadre de nos études au CESI en dernière année d'école d'ingénieur spécialisé en informatique, nous avons dû réaliser ce projet en lien avec l'option Data Science.
 L’entreprise TouNum travaille sur la numérisation des vieilles cassettes vidéo. Des historiens ont fait
 appel à eux pour un projet de recherche de la plus haute importance sur l’analyse de certaines vidéos
 historiques au format PAL qu’ils détiennent sur des cassettes vidéo VHS. Ils ont besoin d’une version
@@ -46,10 +47,10 @@ manière plus ou moins aléatoire.
 ## Le Projet
 ### Data
 
-Les images qui nous ont été fournies proviennent du dataset COCO.
-Un dataset est **clean**, l'autre **degraded** comme cité ci-dessus et comporte chacun 4500 images.
+Les images qui nous ont été fournies proviennent du <a href="http://cocodataset.org/">dataset COCO</a>.
+Le jeu de données est séparé en deux parties. L'une est **clean**, l'autre est **degraded**. Chacune de ces parties comportent 4500 images.
 
-Nous nous sommes servis du dataset **clean** pour entrainer notre model. 
+Nous avons utilisé le dataset **clean** pour entrainer notre modèle. 
 En effet, nous avons décidé de dégrader nous même les images à la volée selon le nombre d'entrainement **(epochs)** que nous souhaitions effectuer mais aussi pour faire correspondre correctement les images entre elles.
 
 Nous avons donc construit une classe permettant de dégrader une image de manière à se rapprocher des dégradations présentent sur les images du dataset **degraded**.
@@ -59,11 +60,11 @@ Nous avons donc construit une classe permettant de dégrader une image de maniè
 </p>
 <br><br>
 
-### Model
-Pour le model, nous avons choisi d'implémenter **Pix2pix** un model GAN (Generative Adversarial Networks).
+### Modèle
+Pour le modèle, nous avons choisi d'implémenter **Pix2pix**, une architecture de GAN (Generative Adversarial Networks), , via la librairie Keras.
 L'idée derrière un GAN est que l'on a deux réseaux, un **Générateur** et un **Discriminateur**, en concurrence l'un avec l'autre.<br />
 Le générateur fabrique de fausses données à transmettre au discriminateur. Le discriminateur voit également les données réelles et prédit si les données qu'il reçoit sont réelles ou fausses.<br />
-Le générateur est entraîné pour tromper le discriminateur, il veut produire des données qui ressemblent le plus possible à des données réelles. Et le discriminateur est entraîné pour savoir quelles données sont réelles et quelles données sont fausses.<br /> 
+Le générateur est entraîné pour tromper le discriminateur, il veut produire des données qui ressemblent le plus possible à des données réelles. Le discriminateur est entraîné pour savoir quelles données sont réelles et quelles données sont fausses.<br /> 
 En fin de compte, le générateur apprend à fournir au discriminateur des données idéalement impossibles à distinguer des données réelles.
 <br><br>
 <p align="center">
@@ -71,8 +72,8 @@ En fin de compte, le générateur apprend à fournir au discriminateur des donn�
 </p>
 <br><br>
 
-### Entrainement
-L'entrainement de ce model est assez long et délicat à réaliser puisqu'il sagit d'entrainer deux éléments que sont **le discriminateur** et le **générateur**.
+### Entraînement
+L'entraînement de ce modèle est assez long et délicat à réaliser puisqu'il sagit d'entrainer deux éléments que sont **le discriminateur** et le **générateur**.
 Le générateur doit être capable de créer des images pour pouvoir tromper le discriminateur et le discriminateur doit être capable de bien distinguer les fausses images.
 
 Notre entrainement doit être donc assez long pour generer des images correct, mais pas trop non plus puisque nous ne disposons pas de puissance de calculs nécessaire pour faire des entrainements de plus de 100 epochs.
@@ -87,7 +88,7 @@ A la première epoch nous pouvons observer visuellement que le generateur a cré
 <br><br>
 
 Cela est confirmé par la mesure ci-dessous, le SSIM (Structural Similarity Index) qui nous sert à calculer la différence de structure entre deux images.<br />
-La mesure sort des résultats entre -1 et 1. La valeur 1 correspond à deux images identiques et la valeur 0 à aucune similitude.
+La mesure sort des résultats entre 0 et 1. La valeur 1 correspond à deux images identiques et la valeur 0 à aucune similitude.
 <p align="center">
   <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/ssim1.png" width="400" title="image originale">
 </p>
@@ -110,7 +111,7 @@ Et la mesure SSIM nous montre que l'image que nous avons générée est moins d�
 Après cet entraînement, nous pouvons dire que notre modèle n'est pas encore parfait et qu'il reste du travail.<br />
 Mais avec une optimisation au niveau des hyperparamètres (nombre d'epoch, taille du batch), du code et/ou avec une plus grosse puissance de calculs, nous pourrions avoir un modèle plus performant.
 
-## Workflow Entrainement
+## Entraînement
 
 Pour utiliser le workflow d'entrainement, il faut télécharger le fichier **Workflow_Entrainement_Model.ipynb** ci-dessus et l'ouvrir avec <a href="https://colab.research.google.com/notebooks/intro.ipynb#recent=true">Google Colab</a>.<br />
 <p align="center">
@@ -124,7 +125,7 @@ Ensuite, vous arriverez sur la page du notebook que vous pourrez executer en cli
 <br><br>
 
 
-## Workflow Utilisation
+## Utilisation
 
 De la même façon que le workflow d'entrainement, pour utiliser le workflow d'utilisation, il faut télécharger le fichier **Workflow_d'utilisation_Photo.ipynb** ci-dessus et l'ouvrir avec <a href="https://colab.research.google.com/notebooks/intro.ipynb#recent=true">Google Colab</a>.<br />
 <p align="center">
