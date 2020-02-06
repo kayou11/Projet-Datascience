@@ -99,11 +99,12 @@ class DataLoader():
     path_files = self.train_path_files if not is_val else self.val_path_files
 
     n_batches = batch_size
-    files_clean = os.listdir(path_files + '/clean/')
-    files_degraded = os.listdir(path_files + '/degraded/')
-    files = self.intersection(files_clean, files_degraded) 
+    files = os.listdir(path_files + '/clean/')
+    #files_clean = os.listdir(path_files + '/clean/')
+    #files_degraded = os.listdir(path_files + '/degraded/')
+    #files = self.intersection(files_clean, files_degraded) 
 
-    ugly = UglyImage(path=path_files + '/clean/', image_size=self.img_res)
+    #ugly = UglyImage(path=path_files + '/clean/', image_size=self.img_res)
 
     print("Load Batch")
     for i in tqdm(range(n_batches)):
