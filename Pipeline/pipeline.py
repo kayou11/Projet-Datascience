@@ -36,4 +36,4 @@ class Pipeline():
         os.system('git clone %s' %url)
         os.system('mv dataset_clean_degraded Val')
         os.system('mv Val/test_degraded Test')
-        os.system('cp Val/degraded Train/degraded')
+        os.system('mv Val/degraded Train/degraded')
