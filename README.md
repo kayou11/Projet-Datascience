@@ -110,7 +110,7 @@ Et la mesure SSIM nous montre que l'image que nous avons générée est moins d�
 Après cet entraînement, nous pouvons dire que notre modèle n'est pas encore parfait et qu'il reste du travail.<br />
 Mais avec une optimisation au niveau des hyperparamètres (nombre d'epoch, taille du batch), du code et/ou avec une plus grosse puissance de calculs, nous pourrions avoir un modèle plus performant.
 
-## Le Workflow Entrainement
+## Workflow Entrainement
 
 Pour utiliser le workflow d'entrainement, il faut télécharger le fichier **Workflow_Entrainement_Model.ipynb** ci-dessus et l'ouvrir avec <a href="https://colab.research.google.com/notebooks/intro.ipynb#recent=true">Google Colab</a>.<br />
 <p align="center">
@@ -124,4 +124,22 @@ Ensuite, vous arriverez sur la page du notebook que vous pourrez executer en cli
 <br><br>
 
 
-## Le Workflow Utilisation
+## Workflow Utilisation
+
+De la même façon que le workflow d'entrainement, pour utiliser le workflow d'utilisation, il faut téléchargé le fichier **Workflow_d'utilisation_Photo.ipynb** ci-dessus et l'ouvrir avec <a href="https://colab.research.google.com/notebooks/intro.ipynb#recent=true">Google Colab</a>.<br />
+<p align="center">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/colab.PNG" title="Google Colab">
+</p>
+<br><br>
+
+Ensuite, avant d'executer le notebook, il faut importer les images à améliorer.<br />
+<p align="center">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/import.PNG" title="Google Colab">
+</p>
+<br><br>
+
+Puis, il suffit maintenant d'indiquer dans la dernière cellule du notebook, l'emplacement des images et d'executer tout le notebook (Cf. la partie exécution du Workflow d'entrainement).<br />
+<p align="center">
+  <img src="https://github.com/kayou11/Projet-Datascience/blob/master/img-readme/utilisation.PNG" title="Google Colab">
+</p>
+<br><br>
