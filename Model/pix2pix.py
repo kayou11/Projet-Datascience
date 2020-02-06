@@ -48,7 +48,7 @@ class DataLoader():
     #self.val_path_files = '/content/drive/My Drive/CESI/Projets A5/Data Science/Projet DataScience/Data/Val'
 
     #Path workflow
-    self.train_path_files = '/content/Train'
+    self.train_path_files = '/content/Val'
     self.val_path_files = '/content/Val'
 
   def intersection(self, lst1, lst2): 
